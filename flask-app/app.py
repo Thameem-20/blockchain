@@ -34,13 +34,48 @@ def plot_comparison(fabric_results, ethereum_results):
 
 @app.route('/fabric/clinical-trial', methods=['POST'])
 def create_fabric_clinical_trial():
-    #to create clinical trial in Hyperledger Fabric
-    pass
+    data = request.get_json()
+    id = data['id']
+    title = data['title']
+    description = data['description']
+    status = data['status']
+    sponsor = data['sponsor']
+    participants = data['participants']
+
+    try:
+        fabric_client.chaincode_invoke(
+            requestor='admin',
+            channel_name='mychannel',
+            peer_names=['peer0.org1.example.com'],
+            fcn='CreateTrial',
+            args=[id, title, description, status, sponsor, str(participants)],
+            cc_name='basic',
+            wait_for_event=True
+        )
+        return jsonify({'message': 'Clinical trial created successfully in Hyperledger Fabric'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 @app.route('/ethereum/clinical-trial', methods=['POST'])
 def create_ethereum_clinical_trial():
-    #to create clinical trial in Ethereum
-    pass
+    data = request.get_json()
+    id = data['id']
+    title = data['title']
+    description = data['description']
+    status = data['status']
+    sponsor = data['sponsor']
+    participants = data['participants']
+
+    contract = web3.eth.contract(address=contract_address, abi=contract_abi)
+    tx_hash = contract.functions.createTrial(id, title, description, status, sponsor, participants).transact({'from': web3.eth.accounts[0]})
+
+    receipt = web3.eth.waitForTransactionReceipt(tx_hash)
+    if receipt['status'] == 1:
+        return jsonify({'message': 'Clinical trial created successfully in Ethereum'})
+    else:
+        return jsonify({'error': 'Failed to create clinical trial in Ethereum'}), 500
+
 
 @app.route('/compare', methods=['GET'])
 def compare():
