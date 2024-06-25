@@ -1,7 +1,3 @@
-Here's a simple README for your clinical trials management project using Hyperledger Fabric and Ethereum:
-
----
-
 # Clinical Trials Management System
 
 This project demonstrates a clinical trials management system using both private blockchain (Hyperledger Fabric) and public blockchain (Ethereum). It allows users to create, read, update, and delete clinical trial records and compares the performance (throughput and latency) of the two blockchain platforms.
