@@ -1,0 +1,60 @@
+{
+    "name": "fabric-network",
+    "version": "1.0.0",
+    "client": {
+      "organization": "Org1",
+      "credentialStore": {
+        "path": "./fabric-client-kv-org1",
+        "cryptoStore": {
+          "path": "./fabric-client-kv-org1"
+        }
+      },
+      "connection": {
+        "timeout": {
+          "peer": {
+            "endorser": "300"
+          },
+          "orderer": "300"
+        }
+      }
+    },
+    "organizations": {
+      "Org1": {
+        "mspid": "Org1MSP",
+        "peers": [
+          "peer0.org1.example.com"
+        ],
+        "certificateAuthorities": [
+          "ca.org1.example.com"
+        ]
+      }
+    },
+    "orderers": {
+      "orderer.example.com": {
+        "url": "grpc://localhost:7050"
+      }
+    },
+    "peers": {
+      "peer0.org1.example.com": {
+        "url": "grpc://localhost:7051",
+        "grpcOptions": {
+          "ssl-target-name-override": "peer0.org1.example.com",
+          "request-timeout": "300000"
+        }
+      }
+    },
+    "certificateAuthorities": {
+      "ca.org1.example.com": {
+        "url": "http://localhost:7054",
+        "httpOptions": {
+          "verify": false
+        },
+        "registrar": {
+          "enrollId": "admin",
+          "enrollSecret": "adminpw"
+        },
+        "caName": "ca-org1"
+      }
+    }
+  }
+  
