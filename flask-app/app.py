@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # Ethereum setup
 web3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
-contract_address = "0xbeAeD27Bd521dc8BD24580eC73B2d4b26E7291C4"  # Replace with your deployed contract address
+contract_address = "0x8D7fBC4F637B1eD0b4D22C5F8C13E9E9402C28A8"  # Replace with your deployed contract address
 contract_abi = [
 	{
 		"anonymous": False,
