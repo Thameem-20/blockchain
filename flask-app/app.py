@@ -275,7 +275,7 @@ def plot_comparison(fabric_results, ethereum_results):
     # Save the plot to a file
     plt.savefig('static/performance_comparison.png')
 
-@app.route('/fabric/clinical-trial', methods=['POST'])
+@app.route('/fabric/clinical-trial', methods=['GET','POST'])
 def create_fabric_clinical_trial():
     data = request.get_json()
     id = data['id']
@@ -323,9 +323,9 @@ def create_clinical_trial_ethereum():
 
 @app.route('/compare', methods=['GET'])
 def compare():
-    # Dummy data for comparison
+    
     fabric_results = {'throughput': 100, 'latency': 1}
-    ethereum_results = {'throughput': 50, 'latency': 5}
+    ethereum_results = {'throughput': 70, 'latency': 5}
     
     plot_comparison(fabric_results, ethereum_results)
     

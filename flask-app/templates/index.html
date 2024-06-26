@@ -51,11 +51,20 @@
             $("#fabricButton").click(function (event) {
                 event.preventDefault();
                 submitTrial('fabric');
+                $("#result").html(`<div class="alert alert-success">sumbitted Successfully</div>`);
+                
+                setTimeout(function () {
+            location.reload();   // Reload the page after 3 seconds
+                }, 1000);
             });
 
             $("#ethereumButton").click(function (event) {
                 event.preventDefault();
                 submitTrial('ethereum');
+                $("#result").html(`<div class="alert alert-success">sumbitted Successfully</div>`);
+                setTimeout(function () {
+            location.reload();   // Reload the page after 3 seconds
+                }, 1000);
             });
 
             $("#compareButton").click(function () {
