@@ -94,10 +94,10 @@
                     data: JSON.stringify(trialData),
                     contentType: "application/json",
                     success: function (response) {
-                        $("#result").html(`<div class="alert alert-success">${response.message}</div>`);
+                        //$("#result").html(`<div class="alert alert-success">${response.message}</div>`);
                     },
                     error: function (error) {
-                        $("#result").html(`<div class="alert alert-danger">${error.responseJSON.error}</div>`);
+                        //$("#result").html(`<div class="alert alert-danger">${error.responseJSON.error}</div>`);
                     }
                 });
             }
